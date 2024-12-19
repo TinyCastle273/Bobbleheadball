@@ -1,0 +1,9 @@
+﻿HeadBall/Library
+HeadBall/Temp
+HeadBall/obj
+HeadBall/Logs
+HeadBall/.vs
+HeadBall/.vsconfig
+*.csproj
+*.sln
+HeadBall/UserSettings

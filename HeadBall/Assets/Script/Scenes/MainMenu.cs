@@ -98,40 +98,21 @@ public class MainMenu : MonoBehaviour
     private void OnStartMatch()
     {
         AudioManager.Instance.PlayButtonClick();
-#if UNITY_WEBGL
-        ApiManager.Instance.Play((res) =>
-        {
-            if (GameManager.Instance.GetEnemyData() != null)
-            {
-                GameManager.Instance.CacheTimePlayed();
-                ScenesController.Instance.LoadGameplay();
-            }
-        },
-        (error) =>
-        {
-            if (error.errorCode.Equals("ASSET_EXPIRED"))
-            {
-                GameManager.Instance.CacheTimePlayed();
-                ScenesController.Instance.LoadGameplay();
-            }
-            else
-                PopupManager.Instance.OpenError(error.message);
-        });
-#else
+
         if (GameManager.Instance.GetEnemyData() != null)
         {
             GameManager.Instance.CacheTimePlayed();
             ScenesController.Instance.LoadGameplay();
         }
-#endif
     }
 
     private void OnPlayFirstBtn()
     {
         AudioManager.Instance.PlayButtonClick();
         animator.enabled = false;
-        bg1Group.DOFade(0f, animTime).OnComplete(() => { 
-            bg1Group.gameObject.SetActive(false); 
+        bg1Group.DOFade(0f, animTime).OnComplete(() =>
+        {
+            bg1Group.gameObject.SetActive(false);
             animator.enabled = true;
             nameCanvas.DOFade(1f, animTime);
             StartCoroutine(IERandomShowDialog());
@@ -170,7 +151,7 @@ public class MainMenu : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(timeShowDialog*1.5f, timeShowDialog*3f));
+            yield return new WaitForSeconds(Random.Range(timeShowDialog * 1.5f, timeShowDialog * 3f));
             var showDialogSeq = DOTween.Sequence();
             showDialogSeq.Append(dialog.DOFade(1f, animTime));
             showDialogSeq.AppendInterval(timeShowDialog);

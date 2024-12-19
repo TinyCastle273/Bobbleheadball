@@ -25,21 +25,8 @@ public class LoadingScene : MonoBehaviour
         logo.localScale = Vector3.zero;
         left.anchoredPosition = new Vector2(-1400f, 34f);
         right.anchoredPosition = new Vector2(1400f, 30f);
-#if UNITY_WEBGL
-        var data = URLParameters.GetSearchParameters();
-        if (data.ContainsKey("token"))
-        {
-            ApiManager.Instance.Token = data["token"];
-            getAccessToken = true;
-        }
-        else
-        {
-            PopupManager.Instance.OpenError("Cannot get your access token");
-            getAccessToken = false;
-        }
-#else
+
         getAccessToken = true;
-#endif
     }
 
     private void Start()
@@ -47,30 +34,7 @@ public class LoadingScene : MonoBehaviour
         if (!getAccessToken) return;
 
         FakeLoading();
-#if UNITY_WEBGL
-        ApiManager.Instance.GetUserProfile((res) =>
-        {
-            ++finishLoading;
-            GameManager.Instance.SetUserName(res.data);
-        },
-        (error) =>
-        {
-            // should it continue or quit???
-            PopupManager.Instance.OpenError(error.message);
-            finishLoading = 0;
-        });
-        ApiManager.Instance.GetUserProfileForGame((res) =>
-        {
-            ++finishLoading;
-            GameManager.Instance.SetUserProfile(res.data);
-        },
-        (error) =>
-        {
-            // should it continue or quit???
-            finishLoading = 0;
-            PopupManager.Instance.OpenError(error.message);
-        });
-#endif
+        finishLoading = 2;
     }
 
     private void FakeLoading()
@@ -94,7 +58,7 @@ public class LoadingScene : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         finishLoading = 2;
 #endif
-        yield return new WaitUntil(()=>finishLoading>=2);
+        yield return new WaitUntil(() => finishLoading >= 2);
         progressBar.value = 1f;
         AfterLoading();
     }

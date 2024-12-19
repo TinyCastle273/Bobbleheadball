@@ -25,33 +25,14 @@ public class GameManager : SingletonMono<GameManager>
 
     public int GetTotalCoin()
     {
-#if UNITY_WEBGL
-        if (userProfileData != null)
-            return userProfileData.score;
-#else
         return PlayerPrefs.GetInt(Constant.PREF_COIN, 0);
-#endif
-        return 0;
     }
 
     public void AddCoinReward(int coin)
     {
-#if UNITY_WEBGL
-        if (userProfileData != null)
-        {
-            ApiManager.Instance.UpdateLevel(coin, (res) => {
-                userProfileData.score = res.data.score;
-                userProfileData.star = res.data.star;
-            },
-            (error) => {
-                PopupManager.Instance.OpenError(error.message);
-                userProfileData.score += coin;
-            });
-        }
-#else
+
         PlayerPrefs.SetInt(Constant.PREF_COIN, PlayerPrefs.GetInt(Constant.PREF_COIN, 0));
         PlayerPrefs.Save();
-#endif
     }
 
     public void SetEnemyData(CharacterSO data)
@@ -81,7 +62,7 @@ public class GameManager : SingletonMono<GameManager>
         }
     }
 
-    public void SetUserProfile(CurrentGameAssetRes res) 
+    public void SetUserProfile(CurrentGameAssetRes res)
     {
         userProfileData = res;
     }
@@ -93,7 +74,7 @@ public class GameManager : SingletonMono<GameManager>
 
     public int GetCoinWin() => coinToWin;
 
-    public void CacheTimePlayed() 
+    public void CacheTimePlayed()
     {
         startPlayedTime = Time.realtimeSinceStartup;
     }
