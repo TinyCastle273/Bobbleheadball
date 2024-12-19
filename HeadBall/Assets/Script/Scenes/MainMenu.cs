@@ -102,6 +102,8 @@ public class MainMenu : MonoBehaviour
         if (GameManager.Instance.GetEnemyData() != null)
         {
             GameManager.Instance.CacheTimePlayed();
+            CyborgSDK.Instance.UpdateMissionInprogress();
+            CyborgSDK.Instance.SDKStartGame();
             ScenesController.Instance.LoadGameplay();
         }
     }

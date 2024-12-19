@@ -17,7 +17,7 @@ public class GameplayScene : SingletonMono<GameplayScene>
     [SerializeField] Button settingBtn;
     [SerializeField] Button quitBtn;
     [Space]
-   
+
 
     [Header("Intro Character")]
     [SerializeField] IntroCharacter player;
@@ -214,7 +214,7 @@ public class GameplayScene : SingletonMono<GameplayScene>
 
             StopAllCoroutines();
             AudioManager.Instance.StopMusic();
-            
+
             finalWhistle.transform.localScale = Vector3.zero;
             finalWhistle.DOScale(1f, 0.25f).SetEase(Ease.OutBack).SetDelay(1f).OnComplete(() => AudioManager.Instance.PlaySfx(whistleFinal, 0.75f));
 
@@ -251,12 +251,15 @@ public class GameplayScene : SingletonMono<GameplayScene>
         MessageBus.Annouce(new Message(MessageBusType.NewRound));
     }
 
-    IEnumerator  IEWaitForResultScreen()
+    IEnumerator IEWaitForResultScreen()
     {
         yield return new WaitForSeconds(5f);
 #if USE_AD
             AdManager.Instance.ShowInterAd();
 #endif
+        CyborgSDK.Instance.SDKShowInterstitialAd();
+        CyborgSDK.Instance.SDKEndGame();
+        CyborgSDK.Instance.UpdateMissionCompleted();
         if (GameManager.Instance.GetCoinWin() == 0)
         {
             ScenesController.Instance.LoadMainMenu();
