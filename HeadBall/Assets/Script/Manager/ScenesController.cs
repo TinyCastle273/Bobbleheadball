@@ -34,16 +34,7 @@ public class ScenesController : SingletonMono<ScenesController>
         sceneIdx = scene.buildIndex;
         if (sceneIdx == 3 || sceneIdx == 5)
         {
-#if USE_AD
-            AdManager.Instance.ShowBanner();
-#endif
             AudioManager.Instance.PlayRandomMusic(bgMusic, 0.25f);
-        }
-        else
-        {
-#if USE_AD
-            AdManager.Instance.HideBanner();
-#endif
         }
         SceneManager.SetActiveScene(scene);
     }

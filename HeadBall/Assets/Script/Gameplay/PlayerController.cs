@@ -99,7 +99,7 @@ public class PlayerController : BaseController
         }
         else
         {
-#if UNITY_EDITOR
+#if UNITY_WEBGL
             CheckKeyboardInput();
 #else
             CheckForTouch();

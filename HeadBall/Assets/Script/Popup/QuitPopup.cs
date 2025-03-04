@@ -35,7 +35,13 @@ public class QuitPopup : BasePopup
         else
             Application.Quit();
 #elif UNITY_WEBGL
-        WebGLHelper.QuitWebGL();
+        if (ScenesController.Instance.IsGmapleyScene())
+        {
+            PopupManager.Instance.CloseQuit(afterCloseCB);
+            ScenesController.Instance.LoadMainMenu();
+        }
+        else
+            WebGLHelper.QuitWebGL();
 #endif
     }
 

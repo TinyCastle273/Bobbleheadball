@@ -13,6 +13,7 @@ public class SplashScreen : MonoBehaviour
 
     IEnumerator WaitForChangeScene()
     {
+        AdManager.Instance.ShowAd();
         yield return new WaitForSeconds(waitTime);
         ScenesController.Instance.LoadLoadingScene();
     }

@@ -66,4 +66,9 @@ public class AudioManager : SingletonMono<AudioManager>
         listener.enabled = enable;
 #endif
     }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        EnableSound(focus);
+    }
 }

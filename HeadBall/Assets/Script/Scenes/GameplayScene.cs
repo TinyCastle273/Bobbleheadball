@@ -223,10 +223,10 @@ public class GameplayScene : SingletonMono<GameplayScene>
         }
         else
         {
-#if USE_AD
+#if UNITY_WEBGL
             if (ScoreToWin - scoreRight == 1 || ScoreToWin - scoreLeft == 1)
             {
-                AdManager.Instance.LoadInterAd();
+                AdManager.Instance.ShowAd();
             }
 #endif
             StartCoroutine(IEForSecond(isLeft));
@@ -254,9 +254,7 @@ public class GameplayScene : SingletonMono<GameplayScene>
     IEnumerator  IEWaitForResultScreen()
     {
         yield return new WaitForSeconds(5f);
-#if USE_AD
-            AdManager.Instance.ShowInterAd();
-#endif
+        AdManager.Instance.ShowAd();
         if (GameManager.Instance.GetCoinWin() == 0)
         {
             ScenesController.Instance.LoadMainMenu();
