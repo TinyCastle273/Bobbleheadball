@@ -226,7 +226,8 @@ public class GameplayScene : SingletonMono<GameplayScene>
 #if USE_AD
             if (ScoreToWin - scoreRight == 1 || ScoreToWin - scoreLeft == 1)
             {
-                AdManager.Instance.LoadInterAd();
+                //AdManager.Instance.LoadInterAd();
+                AdmobManager.Instance.ShowInterstitialAd();
             }
 #endif
             StartCoroutine(IEForSecond(isLeft));
@@ -253,10 +254,11 @@ public class GameplayScene : SingletonMono<GameplayScene>
 
     IEnumerator  IEWaitForResultScreen()
     {
-        yield return new WaitForSeconds(5f);
 #if USE_AD
-            AdManager.Instance.ShowInterAd();
+        //AdManager.Instance.ShowInterAd();
+        AdmobManager.Instance.ShowInterstitialAd();
 #endif
+        yield return new WaitForSeconds(5f);
         if (GameManager.Instance.GetCoinWin() == 0)
         {
             ScenesController.Instance.LoadMainMenu();
@@ -265,6 +267,7 @@ public class GameplayScene : SingletonMono<GameplayScene>
         {
             ScenesController.Instance.LoadReward();
         }
+
     }
 
     IEnumerator MakeTheCrowds()

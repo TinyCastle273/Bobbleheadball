@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "594531272230",
+    "project_id": "bobblehead-ball",
+    "storage_bucket": "bobblehead-ball.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594531272230:android:4e8aee99ee71a3a4d688e7",
+        "android_client_info": {
+          "package_name": "com.tinycastle.bobbleheadball"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "594531272230-qnc96c580cs06o2jl1ep2fdgg0tn88g3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-vvf-sgMJPllrsn1Dqxyduz6S9Tfcmok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "594531272230-qnc96c580cs06o2jl1ep2fdgg0tn88g3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

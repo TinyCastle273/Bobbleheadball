@@ -145,7 +145,8 @@ public class MainMenu : MonoBehaviour
     {
         AudioManager.Instance.PlayButtonClick();
 #if USE_AD
-        AdManager.Instance.ShowRewardAd();
+        //AdManager.Instance.ShowRewardAd();
+        AdmobManager.Instance.ShowInterstitialAd();
 #endif
         PopupManager.Instance.OpenCredit();
     }
