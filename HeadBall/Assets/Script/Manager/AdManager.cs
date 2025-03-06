@@ -7,19 +7,16 @@ public class AdManager : SingletonMono<AdManager>
 {
     private Action _onRewardSuccess;
     private Action _onRewardFailed;
-    private void Start()
+    private void Awake()
     {
-        GameDistribution.Instance.PreloadRewardedAd();
+        GameMonetize.OnPauseGame += OnPauseGame;
+        GameMonetize.OnResumeGame += OnResumeGame;
     }
 
-    void Awake()
+    private void OnDisable()
     {
-        GameDistribution.OnResumeGame += OnResumeGame;
-        GameDistribution.OnPauseGame += OnPauseGame;
-        GameDistribution.OnPreloadRewardedVideo += OnPreloadRewardedVideo;
-        GameDistribution.OnRewardedVideoSuccess += OnRewardedVideoSuccess;
-        GameDistribution.OnRewardedVideoFailure += OnRewardedVideoFailure;
-        GameDistribution.OnRewardGame += OnRewardGame;
+        GameMonetize.OnPauseGame -= OnPauseGame;
+        GameMonetize.OnResumeGame -= OnResumeGame;
     }
 
     public void OnResumeGame()
@@ -36,57 +33,14 @@ public class AdManager : SingletonMono<AdManager>
         ScenesController.Instance.PauseGame(true);
     }
 
-    public void OnRewardGame()
-    {
-        // REWARD PLAYER HERE
-        AudioManager.Instance.EnableSound(true);
-        this._onRewardSuccess?.Invoke();
-        this._onRewardSuccess = null;
-
-    }
-
-    public void OnRewardedVideoSuccess()
-    {
-        // Rewarded video succeeded/completed.;
-        AudioManager.Instance.EnableSound(true);
-
-    }
-
-    public void OnRewardedVideoFailure()
-    {
-        // Rewarded video failed.;
-        AudioManager.Instance.EnableSound(true);
-        this._onRewardFailed?.Invoke();
-        this._onRewardFailed = null;
-    }
-
-    public void OnPreloadRewardedVideo(int loaded)
-    {
-        // Feedback about preloading ad after called GameDistribution.Instance.PreloadRewardedAd
-        // 0: SDK couldn't preload ad
-        // 1: SDK preloaded ad
-    }
-
     public void ShowAd()
     {
         AudioManager.Instance.EnableSound(false);
-        GameDistribution.Instance.ShowAd();
+        GameMonetize.Instance.ShowAd();
 #if UNITY_EDITOR
         Debug.Log("Show Ad");
 #endif
     }
 
-    public void ShowRewardedAd(Action success, Action failed = null)
-    {
-        AudioManager.Instance.EnableSound(false);
-        this._onRewardFailed = failed;
-        this._onRewardSuccess = success;
-        this.PreloadRewardedAd();
-        GameDistribution.Instance.ShowRewardedAd();
-    }
 
-    public void PreloadRewardedAd()
-    {
-        GameDistribution.Instance.PreloadRewardedAd();
-    }
 }
