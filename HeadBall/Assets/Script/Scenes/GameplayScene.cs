@@ -224,7 +224,7 @@ public class GameplayScene : SingletonMono<GameplayScene>
         else
         {
 #if UNITY_WEBGL
-            if (ScoreToWin - scoreRight == 1 || ScoreToWin - scoreLeft == 1)
+            if (ScoreToWin - scoreRight == 5 || ScoreToWin - scoreLeft == 5)
             {
                 AdManager.Instance.ShowAd();
             }
@@ -253,8 +253,8 @@ public class GameplayScene : SingletonMono<GameplayScene>
 
     IEnumerator  IEWaitForResultScreen()
     {
-        yield return new WaitForSeconds(5f);
         AdManager.Instance.ShowAd();
+        yield return new WaitForSeconds(5f);
         if (GameManager.Instance.GetCoinWin() == 0)
         {
             ScenesController.Instance.LoadMainMenu();

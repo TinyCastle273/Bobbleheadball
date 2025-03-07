@@ -25,6 +25,7 @@ public class ScenesController : SingletonMono<ScenesController>
     {
         // load splash screen first
         SceneManager.LoadScene(sceneIdxToStart, LoadSceneMode.Additive);
+
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

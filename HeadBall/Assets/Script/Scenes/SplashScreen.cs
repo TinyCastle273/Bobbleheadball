@@ -8,12 +8,12 @@ public class SplashScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AdManager.Instance.ShowAd();
         StartCoroutine(WaitForChangeScene());
     }
 
     IEnumerator WaitForChangeScene()
     {
-        AdManager.Instance.ShowAd();
         yield return new WaitForSeconds(waitTime);
         ScenesController.Instance.LoadLoadingScene();
     }
