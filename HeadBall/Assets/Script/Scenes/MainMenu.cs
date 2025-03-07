@@ -98,32 +98,11 @@ public class MainMenu : MonoBehaviour
     private void OnStartMatch()
     {
         AudioManager.Instance.PlayButtonClick();
-#if UNITY_WEBGL
-        ApiManager.Instance.Play((res) =>
-        {
-            if (GameManager.Instance.GetEnemyData() != null)
-            {
-                GameManager.Instance.CacheTimePlayed();
-                ScenesController.Instance.LoadGameplay();
-            }
-        },
-        (error) =>
-        {
-            if (error.errorCode.Equals("ASSET_EXPIRED"))
-            {
-                GameManager.Instance.CacheTimePlayed();
-                ScenesController.Instance.LoadGameplay();
-            }
-            else
-                PopupManager.Instance.OpenError(error.message);
-        });
-#else
         if (GameManager.Instance.GetEnemyData() != null)
         {
             GameManager.Instance.CacheTimePlayed();
             ScenesController.Instance.LoadGameplay();
         }
-#endif
     }
 
     private void OnPlayFirstBtn()

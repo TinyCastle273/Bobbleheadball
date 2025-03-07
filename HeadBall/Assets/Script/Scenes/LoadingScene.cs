@@ -16,7 +16,7 @@ public class LoadingScene : MonoBehaviour
     private float fakeTime = 0;
     private float counter = 0;
     private int finishLoading;
-    private bool getAccessToken = false;
+    
     private void Awake()
     {
         fakeTime = UnityEngine.Random.Range(2f, maxFakeTime);
@@ -25,52 +25,13 @@ public class LoadingScene : MonoBehaviour
         logo.localScale = Vector3.zero;
         left.anchoredPosition = new Vector2(-1400f, 34f);
         right.anchoredPosition = new Vector2(1400f, 30f);
-#if UNITY_WEBGL
-        var data = URLParameters.GetSearchParameters();
-        if (data.ContainsKey("token"))
-        {
-            ApiManager.Instance.Token = data["token"];
-            getAccessToken = true;
-        }
-        else
-        {
-            PopupManager.Instance.OpenError("Cannot get your access token");
-            getAccessToken = false;
-        }
-#else
-        getAccessToken = true;
-#endif
     }
 
     private void Start()
     {
-        if (!getAccessToken) return;
+        
 
         FakeLoading();
-#if UNITY_WEBGL
-        ApiManager.Instance.GetUserProfile((res) =>
-        {
-            ++finishLoading;
-            GameManager.Instance.SetUserName(res.data);
-        },
-        (error) =>
-        {
-            // should it continue or quit???
-            PopupManager.Instance.OpenError(error.message);
-            finishLoading = 0;
-        });
-        ApiManager.Instance.GetUserProfileForGame((res) =>
-        {
-            ++finishLoading;
-            GameManager.Instance.SetUserProfile(res.data);
-        },
-        (error) =>
-        {
-            // should it continue or quit???
-            finishLoading = 0;
-            PopupManager.Instance.OpenError(error.message);
-        });
-#endif
     }
 
     private void FakeLoading()
