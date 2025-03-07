@@ -43,10 +43,7 @@ public class BannerAdController : MonoBehaviour
     public void LoadAd()
     {
         // create an instance of a banner view first.
-        if (_bannerView == null)
-        {
-            CreateBannerView();
-        }
+        CreateBannerView();
 
         // create our request used to load the ad.
         var adRequest = new AdRequest();

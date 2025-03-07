@@ -224,7 +224,7 @@ public class GameplayScene : SingletonMono<GameplayScene>
         else
         {
 #if USE_AD
-            if (ScoreToWin - scoreRight == 1 || ScoreToWin - scoreLeft == 1)
+            if (ScoreToWin - scoreRight == 5 || ScoreToWin - scoreLeft == 5)
             {
                 //AdManager.Instance.LoadInterAd();
                 AdmobManager.Instance.ShowInterstitialAd();
