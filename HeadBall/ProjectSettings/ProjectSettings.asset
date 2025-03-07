@@ -173,7 +173,7 @@ PlayerSettings:
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 16
   AndroidMinSdkVersion: 22
-  AndroidTargetSdkVersion: 34
+  AndroidTargetSdkVersion: 35
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -256,11 +256,11 @@ PlayerSettings:
   clonedFromGUID: 5f34be1353de5cf4398729fda238591b
   templatePackageId: com.unity.template.2d@3.3.2
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  useCustomMainManifest: 1
+  useCustomMainManifest: 0
   useCustomLauncherManifest: 0
   useCustomMainGradleTemplate: 1
   useCustomLauncherGradleManifest: 0
-  useCustomBaseGradleTemplate: 0
+  useCustomBaseGradleTemplate: 1
   useCustomGradlePropertiesTemplate: 1
   useCustomGradleSettingsTemplate: 1
   useCustomProguardFile: 0
@@ -271,7 +271,7 @@ PlayerSettings:
   AndroidKeystoreName: D:/Work/user.keystore
   AndroidKeyaliasName: cuong2002k
   AndroidEnableArmv9SecurityFeatures: 0
-  AndroidBuildApkPerCpuArchitecture: 1
+  AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
