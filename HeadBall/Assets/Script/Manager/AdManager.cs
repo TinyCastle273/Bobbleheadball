@@ -11,7 +11,7 @@ public class AdManager : SingletonMono<AdManager>
     }
 
     [AOT.MonoPInvokeCallback(typeof(Gpx.gpxCallback))]
-    public void OnInterstitalAdSuccess()
+    public static void OnInterstitalAdSuccess()
     {
         Gpx.Log("SUCCESS");
     }
