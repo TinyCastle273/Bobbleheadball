@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class AdManager : SingletonMono<AdManager>
 {
-    private Action _onRewardSuccess;
-    private Action _onRewardFailed;
     private void Awake()
     {
         GameMonetize.OnPauseGame += OnPauseGame;

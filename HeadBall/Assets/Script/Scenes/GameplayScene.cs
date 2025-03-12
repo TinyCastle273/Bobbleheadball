@@ -223,12 +223,12 @@ public class GameplayScene : SingletonMono<GameplayScene>
         }
         else
         {
-#if UNITY_WEBGL
+
             if (ScoreToWin - scoreRight == 5 || ScoreToWin - scoreLeft == 5)
             {
                 AdManager.Instance.ShowAd();
             }
-#endif
+
             StartCoroutine(IEForSecond(isLeft));
         }
     }
@@ -253,7 +253,6 @@ public class GameplayScene : SingletonMono<GameplayScene>
 
     IEnumerator  IEWaitForResultScreen()
     {
-        AdManager.Instance.ShowAd();
         yield return new WaitForSeconds(5f);
         if (GameManager.Instance.GetCoinWin() == 0)
         {

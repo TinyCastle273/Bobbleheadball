@@ -124,8 +124,8 @@ public class MainMenu : MonoBehaviour
 
     private void OnCreditBtn()
     {
-        AudioManager.Instance.PlayButtonClick();
         AdManager.Instance.ShowAd();
+        AudioManager.Instance.PlayButtonClick();
         PopupManager.Instance.OpenCredit();
     }
 
