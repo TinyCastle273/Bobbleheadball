@@ -140,7 +140,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 2.6
+  bundleVersion: 2.8
   preloadedAssets:
   - {fileID: -4245905390949132227, guid: 619504610873be84cb153e43baf12986, type: 2}
   - {fileID: 11400000, guid: 8830bf98d34e9af448e314f0be805a5e, type: 2}
@@ -171,9 +171,9 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 16
-  AndroidMinSdkVersion: 22
-  AndroidTargetSdkVersion: 35
+  AndroidBundleVersionCode: 17
+  AndroidMinSdkVersion: 34
+  AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -256,7 +256,7 @@ PlayerSettings:
   clonedFromGUID: 5f34be1353de5cf4398729fda238591b
   templatePackageId: com.unity.template.2d@3.3.2
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  useCustomMainManifest: 0
+  useCustomMainManifest: 1
   useCustomLauncherManifest: 0
   useCustomMainGradleTemplate: 1
   useCustomLauncherGradleManifest: 0
@@ -268,8 +268,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/Work/user.keystore
-  AndroidKeyaliasName: cuong2002k
+  AndroidKeystoreName: '{inproject}: headball.keystore'
+  AndroidKeyaliasName: headball
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
